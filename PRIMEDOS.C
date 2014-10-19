@@ -1,18 +1,13 @@
 /*
         PRIME is (C)opyright 1995 by Paul Damer and Jawed Karim
         You may distribute the source freely only if it remains
-        unchanged. You may also recompile it for whatever 
-        platform, and give yourself credit by letting it display
-        your name upon startup of PRIME. Leave the authors display 
-        lines unchanged however.
+        unchanged and is distributed along with prime.doc. You may 
+        also recompile it for whatever platform, and give yourself 
+        credit by letting it display your name upon startup of 
+        PRIME. Leave the authors display lines unchanged however.
 
         Jawed Karim <kari0022@gold.tc.umn.edu>
 */
-
-
-
-
-
 
 #include <stdio.h>
 #include <conio.h>
@@ -20,22 +15,29 @@
 
 void main()
 {
-        double x = 1, y;
-        long dis;
-        int counter = 0, ch;
-        
+        double x, y;
+        int counter = 0;
         clrscr();
-        puts("PRIME.EXE -- PRIME NUMBER GENERATOR v1.0");
-        puts("(C) 1995 by Paul Damer & Jawed Karim <kari0022@gold.tc.umn.edu>");
-        puts("---------------------------------------------------------------");
+       
+        puts("PRIME NUMBER GENERATOR v1.3");
+        puts("(C) 1996 by Jawed Karim <Jawed.Karim-1@umn.edu> and Paul Damer");
+        puts("--------------------------------------------------------------");
         puts("");
-        puts("Hit CTRL-C at any time to stop.");
-        puts("--hit any key when ready--");
-        ch = getch();
-        puts("");
-        
-        printf("2\n3\n"); /* the loop leaves these numbers out.. */
+        printf("START: ");
+        scanf("%lf", &x);
 
+        if ( (x < 0) || ( floor(x) != x ) )
+        {
+                puts("ERROR: enter positive integers only.");
+                exit(1);
+        }
+        
+        if (x < 2)
+                printf("2\n3\n"); /* the loop leaves these numbers out.. */
+        
+        if (x == 2)
+                printf("3\n");
+        
         while (1)
         {
                 x++;                
@@ -56,18 +58,12 @@ void main()
                                         counter = 0;
                                 }
 
-                                dis = x;
-                                printf("%ld\n", dis);
+                                printf("%.0lf\n", x);
                                 counter++;
                         }
                         
                         else
                                 goto lbl;
-                                /* 
-                                yuck goto! sorry, but I had
-                                to... this actually
-                                runs faster!
-                                */
                 }
         }
 }
